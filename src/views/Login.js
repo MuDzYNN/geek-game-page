@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import Api from '../libs/api';
+import { useNavigate } from 'react-router-dom';
+import useApi from '../hooks/useApi';
 import './Login.sass';
 
 const Login = () => {
     const [formData, setFormData] = useState({});
     const [formError, setFormError] = useState('');
-
+    const navigate = useNavigate();
+    const Api = useApi();
 
     const handleForm = e => {
         e.preventDefault();
@@ -20,13 +22,13 @@ const Login = () => {
         if (!formData['login']) setFormError('Uzupełnij pole login');
         if (!formData['password']) setFormError('Uzupełnij pole hasło');
 
-        Api('login', {
+        Api('auth/login', {
             method: 'POST',
             body: JSON.stringify(formData)
         }).then(res => {
             setFormError('');
-            if (res.error) return setFormError(res.message);
-            setFormError('Zalogowano');
+            if (res?.error) return setFormError(res.message);
+            navigate('/dashboard');
         }).catch(error => {
             console.error(error);
             setFormError(error.message);
