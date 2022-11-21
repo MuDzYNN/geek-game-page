@@ -75,7 +75,6 @@ const QuestionList = () => {
     }, [questionsPerPage, amountOfQuestions]);
 
     useEffect(() => {
-        console.log((currentPage * questionsPerPage), (currentPage * questionsPerPage) + questionsPerPage)
         Api('questions/fetchQuetions', {
             method: 'POST',
             body: JSON.stringify({
