@@ -1,7 +1,7 @@
 const Api = () => {
     return (url, options) => {
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:3001/v1/${url}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/${url}`, {
                 method: 'GET',
                 credentials: 'include',
                 mode: 'cors',
