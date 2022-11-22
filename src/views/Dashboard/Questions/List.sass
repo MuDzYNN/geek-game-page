@@ -2,8 +2,9 @@
     width: 100%
     display: flex
     flex-wrap: wrap
-    justify-content: space-between
-    align-items: center
+    flex-direction: column
+    justify-content: flex-start
+    align-items: flex-start
 
 .controls-pages
     padding: 0
@@ -82,7 +83,7 @@
 .question.active
     .question-header
         border-radius: 10px 10px 0 0
-    
+
     .question-header-title
         transition: .3s all ease-in-out
         color: var(--color-accent)
@@ -98,3 +99,33 @@
         border-top: 1px solid #fff
         border-radius: 0 0 10px 10px
         padding: 0 1rem
+
+.question-loading
+    height: 200px
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &::before
+        content: ""
+        width: 80px
+        height: 80px
+        border-radius: 50%
+        border: 2px solid var(--color-bg)
+        animation: spin 1.5s linear infinite
+        border-bottom-color: var(--color-accent)
+
+    @keyframes spin
+        from
+            transform: rotate(0)
+
+        to
+            transform: rotate(360deg)
+
+@media screen and (min-width: 1024px)
+    .controls
+        flex-wrap: nowrap
+        flex-direction: row
+        justify-content: space-between
+        align-items: center

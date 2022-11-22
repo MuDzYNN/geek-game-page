@@ -13,7 +13,7 @@ const Api = () => {
                     if (res.error) return reject(res.message);
                     resolve(res);
                 })
-                .catch(error => reject(error));
+                .catch(error => reject(error.toString()));
         });
     }
 };

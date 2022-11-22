@@ -1,0 +1,65 @@
+.auth
+    margin: 0 auto
+    margin-top: 5rem
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: flex-start
+    width: 320px
+    background-color: var(--color-primary)
+    border-radius: 5px
+    padding: 1rem
+
+.login, .register
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    padding: 1rem
+
+    h1
+        text-align: center
+        margin: 0
+
+    p
+        margin-bottom: .2rem
+
+    .form-error
+        margin-top: 2rem
+        color: rgb(255, 50, 50)
+        word-break: break-all
+
+    button
+        margin-top: 2rem
+
+
+.login
+    margin-bottom: 1.5rem
+
+.register
+    border-top: 1px solid #fff
+    padding-top: 2rem
+
+@media screen and (min-width: 1024px)
+    .auth
+        flex-direction: row
+        width: 800px
+
+    .login, .register
+        margin: 0
+        width: 50%
+        height: max-content
+
+        &>*
+            width: 100%
+
+        button
+            justify-self: flex-end
+
+    .login
+        padding-right: 2rem
+
+    .register
+        border: none
+        border-left: 1px solid #fff
+        padding-top: 1rem
+        padding-left: 2rem

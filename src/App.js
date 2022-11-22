@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./views/Login";
+import Auth from "./views/Auth";
 import Dashboard from "./views/Dashboard";
 
 // Stylesheets
@@ -10,7 +10,7 @@ const App = () => {
     return (
         <Routes>
             <Route path="/">
-                <Route path="/login" element={<Login />} />
+                <Route path="/auth" element={<Auth />} />
                 <Route path="/dashboard/*" element={<Dashboard />} />
             </Route>
         </Routes>

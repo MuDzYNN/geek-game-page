@@ -7,6 +7,7 @@ import './index.sass';
 // Components
 import Home from './Home';
 import QuestionList from './Questions/List';
+import QuestionAdd from './Questions/Add';
 
 const navLinks = [
     {
@@ -53,12 +54,23 @@ const Dashboard = () => {
 
     useEffect(() => {
         Api('/fetchUser').then(res => {
+            console.log(res)
             setUser(res);
         }).catch(err => {
             console.error(err);
-            if (err === 'Unauthorized') navigate('/login');
+            if (err === 'Unauthorized') navigate('/auth');
         });
     }, []);
+
+    const handleLogout = () => {
+        Api('/auth/logout', {
+            method: 'POST'
+        }).then(() => {
+            navigate('/auth');
+        }).catch(err => {
+            console.error(err);
+        });
+    }
 
     return (
         <div className={`dashboard ${isHamburgerAcitve ? 'hamburger-active' : ''}`}>
@@ -68,7 +80,7 @@ const Dashboard = () => {
                         {user?.login ? user?.login : "Nieznany"} <FaCaretUp />
                     </p>
                     <div className='header-user-dropdown'>
-                        <div className="header-user-option"><FaSignOutAlt /> Wyloguj się</div>
+                        <div className="header-user-option" onClick={handleLogout}><FaSignOutAlt /> Wyloguj się</div>
                     </div>
                 </div>
                 <div className="dashboard-hamburger" onClick={() => setHamburgerAcitve(!isHamburgerAcitve)}>
@@ -79,18 +91,20 @@ const Dashboard = () => {
             </header>
             <nav className="dashboard-nav">
                 {navLinks.map((section, idx) => {
-                    // Permission check
+                    if (section.permission) {
+                        const permissions = user?.permissions?.map(permission => permission.includes(section.permission));
+                        if (permissions && permissions.length < 1) return null;
+                    }
                     return (
                         <div className="nav-section" key={idx}>
                             <h1 className="nav-section-title">{section.title}</h1>
-                            {section.options.map(({ to, permission, Icon, label }, idx) => {
-                                // Permission check
-                                return (
+                            {section.options.map(({ to, permission, Icon, label }, idx) => (
+                                !permission || user?.permissions?.includes(permission) ? (
                                     <Link key={idx} to={to} className={`nav-section-option ${window.location.pathname === to ? 'active' : ''}`}>
                                         <Icon /> {label}
                                     </Link>
-                                )
-                            })}
+                                ) : (null)
+                            ))}
                         </div>
                     );
                 })}
@@ -101,6 +115,7 @@ const Dashboard = () => {
                         <Route index element={<Home />} />
                         <Route path="questions">
                             <Route path='list' element={<QuestionList />} />
+                            <Route path='add' element={<QuestionAdd />} />
                         </Route>
                     </Route>
                 </Routes>

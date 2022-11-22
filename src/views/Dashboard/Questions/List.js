@@ -15,6 +15,7 @@ const Question = ({ id, question }) => {
 
         if (isDropdownActive && goodAnswers.length < 1) {
             Api('questions/fetchAnswers?' + new URLSearchParams({ question: id })).then(res => {
+                console.log(res.data)
                 setGoodAnswers(res.data.goodAnswers);
                 setWrongAnswers(res.data.wrongAnswers);
             }).catch(console.error);
@@ -33,20 +34,26 @@ const Question = ({ id, question }) => {
                 <FaCaretUp className='question-header-caret' />
             </div>
             <div className="question-dropdown">
-                <p className="question-dropdown-item">ID: {id}</p>
-                <p className="question-dropdown-item">Pytanie: {question}</p>
-                <p className="question-dropdown-item">Poprawne odpowiedzi</p>
-                <ul>
-                    {goodAnswers.map((answer, idx) => (
-                        <li key={idx}>{answer}</li>
-                    ))}
-                </ul>
-                <p className="question-dropdown-item">Niepoprawne odpowiedzi</p>
-                <ul>
-                    {wrongAnswers.map((answer, idx) => (
-                        <li key={idx}>{answer}</li>
-                    ))}
-                </ul>
+                {wrongAnswers.length > 0 ? (
+                    <>
+                        <p className="question-dropdown-item">ID: {id}</p>
+                        <p className="question-dropdown-item">Pytanie: {question}</p>
+                        <p className="question-dropdown-item">Poprawne odpowiedzi</p>
+                        <ul>
+                            {goodAnswers.map((answer, idx) => (
+                                <li key={idx}>{answer}</li>
+                            ))}
+                        </ul>
+                        <p className="question-dropdown-item">Niepoprawne odpowiedzi</p>
+                        <ul>
+                            {wrongAnswers.map((answer, idx) => (
+                                <li key={idx}>{answer}</li>
+                            ))}
+                        </ul>
+                    </>
+                ) : (
+                    <div className="question-loading"></div>
+                )}
             </div>
         </div>
     );
