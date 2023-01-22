@@ -5,6 +5,7 @@ import Dashboard from "./views/Dashboard";
 
 // Stylesheets
 import './stylesheets/input.sass';
+import './stylesheets/progress.sass';
 
 const App = () => {
     return (

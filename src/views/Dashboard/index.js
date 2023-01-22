@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { FaHouseUser, FaClipboard, FaList, FaPlus, FaCaretUp, FaSignOutAlt } from 'react-icons/fa';
+import { FaSignInAlt, FaHouseUser, FaClipboard, FaList, FaPlus, FaCaretUp, FaSignOutAlt } from 'react-icons/fa';
 import useApi from '../../hooks/useApi';
 import './index.sass';
 
@@ -8,6 +8,8 @@ import './index.sass';
 import Home from './Home';
 import QuestionList from './Questions/List';
 import QuestionAdd from './Questions/Add';
+import GameLogin from './Game/Login';
+import GameEmulatorLogin from './Game/GameEmulatorLogin';
 
 const navLinks = [
     {
@@ -22,6 +24,21 @@ const navLinks = [
                 Icon: FaClipboard,
                 label: 'Panel',
                 to: '/dashboard',
+            },
+        ]
+    },
+    {
+        title: 'Gra',
+        options: [
+            {
+                Icon: FaSignInAlt,
+                label: 'Logowanie w grze',
+                to: '/dashboard/game/login',
+            },
+            {
+                Icon: FaSignInAlt,
+                label: 'Emulator logowania z gry',
+                to: '/dashboard/game/game-login',
             },
         ]
     },
@@ -116,6 +133,10 @@ const Dashboard = () => {
                         <Route path="questions">
                             <Route path='list' element={<QuestionList />} />
                             <Route path='add' element={<QuestionAdd />} />
+                        </Route>
+                        <Route path="game">
+                            <Route path='login' element={<GameLogin />} />
+                            <Route path='game-login' element={<GameEmulatorLogin />} />
                         </Route>
                     </Route>
                 </Routes>
