@@ -12,7 +12,7 @@ const GameLogin = () => {
     const timeRef = useRef(null);
 
     useEffect(() => {
-        const ws = new ReconnectingWebSocket('ws://localhost:3001/v1/websocket');
+        const ws = new ReconnectingWebSocket(process.env.REACT_APP_API_WEBSOCKET_URL);
         ws.onerror = err => console.error(err);
 
         ws.onopen = () => {
