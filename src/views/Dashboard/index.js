@@ -71,8 +71,8 @@ const Dashboard = () => {
 
     useEffect(() => {
         Api('/fetchUser').then(res => {
-            console.log(res)
-            setUser(res);
+            if (res.error) throw new Error(res.message ?? "Unkown error");
+            setUser(res.data.user);
         }).catch(err => {
             console.error(err);
             if (err === 'Unauthorized') navigate('/auth');
@@ -116,12 +116,13 @@ const Dashboard = () => {
                         <div className="nav-section" key={idx}>
                             <h1 className="nav-section-title">{section.title}</h1>
                             {section.options.map(({ to, permission, Icon, label }, idx) => (
-                                !permission || user?.permissions?.includes(permission) ? (
+                                (!permission || user?.permissions?.includes(permission)) ? (
                                     <Link key={idx} to={to} className={`nav-section-option ${window.location.pathname === to ? 'active' : ''}`}>
                                         <Icon /> {label}
                                     </Link>
                                 ) : (null)
-                            ))}
+                            )
+                            )}
                         </div>
                     );
                 })}
