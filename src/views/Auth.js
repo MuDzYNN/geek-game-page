@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useApi from '../hooks/useApi';
 import './Auth.sass';
@@ -11,6 +11,15 @@ const Auth = () => {
     const registerForm = useRef();
     const navigate = useNavigate();
     const Api = useApi();
+
+    useEffect(() => {
+        Api('/fetchUser').then(res => {
+            if (res.error) throw new Error(res.message ?? "Unkown error");
+            navigate('/dashboard');
+        }).catch(() => {
+            console.log('User not logged in');
+        });
+    }, []);
 
     const handleLogin = e => {
         e.preventDefault();

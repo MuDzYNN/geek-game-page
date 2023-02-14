@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { FaSignInAlt, FaHouseUser, FaClipboard, FaList, FaPlus, FaCaretUp, FaSignOutAlt } from 'react-icons/fa';
+import { FaSignInAlt, FaHouseUser, FaClipboard, FaList, FaPlus, FaCaretUp, FaSignOutAlt, FaHistory } from 'react-icons/fa';
+import { BiStats } from 'react-icons/bi';
+import { useRecoilState } from 'recoil';
+import userDashboard from '../../atoms/dashboardUser';
 import useApi from '../../hooks/useApi';
 import './index.sass';
 
 // Components
-import Home from './Home';
+import DashboardHome from './Home';
 import QuestionList from './Questions/List';
 import QuestionAdd from './Questions/Add';
 import GameLogin from './Game/Login';
 import GameEmulatorLogin from './Game/GameEmulatorLogin';
+import GameHistory from './Game/History';
+import GameStats from './Game/Stats';
 
 const navLinks = [
     {
@@ -35,10 +40,20 @@ const navLinks = [
                 label: 'Logowanie w grze',
                 to: '/dashboard/game/login',
             },
+            // {
+            //     Icon: FaSignInAlt,
+            //     label: 'Emulator logowania z gry',
+            //     to: '/dashboard/game/game-login',
+            // },
             {
-                Icon: FaSignInAlt,
-                label: 'Emulator logowania z gry',
-                to: '/dashboard/game/game-login',
+                Icon: FaHistory,
+                label: 'Historia gier',
+                to: '/dashboard/game/history',
+            },
+            {
+                Icon: BiStats,
+                label: 'Statystyki',
+                to: '/dashboard/game/stats',
             },
         ]
     },
@@ -63,7 +78,7 @@ const navLinks = [
 ];
 
 const Dashboard = () => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useRecoilState(userDashboard);
     const [isHamburgerAcitve, setHamburgerAcitve] = useState(false);
     const [isProfileActive, setProfileActive] = useState(false);
     const navigate = useNavigate();
@@ -130,7 +145,7 @@ const Dashboard = () => {
             <div className="dashboard-wrapper">
                 <Routes>
                     <Route path="/">
-                        <Route index element={<Home />} />
+                        <Route index element={<DashboardHome />} />
                         <Route path="questions">
                             <Route path='list' element={<QuestionList />} />
                             <Route path='add' element={<QuestionAdd />} />
@@ -138,6 +153,8 @@ const Dashboard = () => {
                         <Route path="game">
                             <Route path='login' element={<GameLogin />} />
                             <Route path='game-login' element={<GameEmulatorLogin />} />
+                            <Route path='history' element={<GameHistory />} />
+                            <Route path='stats' element={<GameStats />} />
                         </Route>
                     </Route>
                 </Routes>
