@@ -1,0 +1,95 @@
+.header
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 5rem
+    padding: .5rem 1rem
+    background: var(--color-primary)
+    display: flex
+    justify-content: space-between
+    align-items: center
+    z-index: 100
+
+    .hamgurger
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        height: 2rem
+        width: 2.35rem
+        z-index: 10
+        cursor: pointer
+
+        span
+            width: 100%
+            height: 22%
+            background: var(--color-accent)
+            border-radius: 1.5rem
+            transition: all .3s ease-in-out
+
+            &:nth-child(1)
+                transform-origin: 0 0
+            &:nth-child(2)
+                transition: all .2s ease-in-out
+            &:nth-child(3)
+                transform-origin: 0 100%
+
+    nav
+        position: fixed
+        top: 0
+        right: 0
+        width: 75%
+        height: 100vh
+        padding: 2rem
+        padding-top: 5rem
+        display: flex
+        align-items: center
+        flex-direction: column
+        background: var(--color-primary)
+        transform: translateX(100%)
+        transition: all .3s ease-in-out
+
+        p
+            text-align: center
+            margin: .5rem
+            cursor: pointer
+            transition: color .3s ease-in-out
+            font-weight: 500
+            font-size: 1.1rem
+
+            &:hover
+                color: var(--color-accent)
+
+.header[data-active=true]
+    nav
+        transform: translateX(0)
+
+    .hamgurger span
+        &:nth-child(1)
+            transform: rotate(45deg)
+        &:nth-child(2)
+            transform: scaleX(0)
+        &:nth-child(3)
+            transform: rotate(-45deg)
+
+@media screen and (min-width: 1024px)
+    .header
+        padding: .5rem 16rem
+
+        .hamgurger
+            display: none
+
+        nav
+            position: sticky
+            width: auto
+            height: auto
+            background: transparent
+            flex-direction: row
+            padding: 0
+            transform: none
+
+            p
+                text-align: left
+                margin: 0 .75rem
+                cursor: pointer

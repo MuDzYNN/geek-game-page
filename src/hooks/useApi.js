@@ -1,6 +1,7 @@
 const Api = () => {
     return (url, options) => {
         return new Promise((resolve, reject) => {
+            // console.log(`Request to ${process.env.REACT_APP_API_URL}/${url}`, options)
             fetch(`${process.env.REACT_APP_API_URL}/${url}`, {
                 method: 'GET',
                 credentials: 'include',

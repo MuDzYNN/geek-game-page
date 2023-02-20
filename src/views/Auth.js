@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import useApi from '../hooks/useApi';
 import './Auth.sass';
@@ -7,6 +8,7 @@ const Auth = () => {
     const [loginData, setLoginData] = useState({});
     const [loginError, setLoginError] = useState('');
     const [registerData, setRegisterData] = useState({});
+    const [acceptedTos, setAcceptedTos] = useState(false);
     const [registerError, setRegisterError] = useState('');
     const registerForm = useRef();
     const navigate = useNavigate();
@@ -61,6 +63,7 @@ const Auth = () => {
         if (!registerData.login) return setRegisterError('Uzupełnij pole login');
         if (!registerData.email) return setRegisterError('Uzupełnij pole Email');
         if (!registerData.password) return setRegisterError('Uzupełnij pole hasło');
+        if (!acceptedTos) return setRegisterError('Musisz zaakceptować warunki regulaminu');
         if (registerData.login.length < 5) return setRegisterError('Login musi zawierać conamniej 5 znaków');
         if (registerData.login.length > 30) return setRegisterError('Login może zawierać maksymalnie 20 znaków');
         if (registerData.password.length < 8) return setRegisterError('Hasło musi zawierać conamniej 8 znaków');
@@ -100,7 +103,9 @@ const Auth = () => {
                 <p>Adres e-mail</p>
                 <input type="email" className="email" placeholder='Adres e-mail' />
                 <p>Hasło</p>
-                <input type="password" className="password" placeholder='Hasło' />
+                <input type="password" className="password" placeholder='Hasło' required={true} />
+
+                <p><input type="checkbox" name="rules" id="rules" onChange={() => setAcceptedTos(!acceptedTos)} /> Akceptuję <Link to="/tos"><u>regulamin</u></Link></p>
 
                 <p className='form-error'>{registerError}</p>
 

@@ -14,7 +14,7 @@ import QuestionAdd from './Questions/Add';
 import GameLogin from './Game/Login';
 import GameEmulatorLogin from './Game/GameEmulatorLogin';
 import GameHistory from './Game/History';
-import GameStats from './Game/Stats';
+import Beasts from './Game/Beasts';
 
 const navLinks = [
     {
@@ -52,8 +52,8 @@ const navLinks = [
             },
             {
                 Icon: BiStats,
-                label: 'Statystyki',
-                to: '/dashboard/game/stats',
+                label: 'Rekordy',
+                to: '/dashboard/game/beasts',
             },
         ]
     },
@@ -154,7 +154,7 @@ const Dashboard = () => {
                             <Route path='login' element={<GameLogin />} />
                             <Route path='game-login' element={<GameEmulatorLogin />} />
                             <Route path='history' element={<GameHistory />} />
-                            <Route path='stats' element={<GameStats />} />
+                            <Route path='beasts' element={<Beasts />} />
                         </Route>
                     </Route>
                 </Routes>
