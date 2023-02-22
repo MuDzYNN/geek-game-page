@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import useApi from '../../../hooks/useApi';
 import './Add.sass';
 
-const QuestionAdd = () => {
+const QuestionAdd = ({ apiUrl, captcha = false }) => {
     const defaultFormData = { goodAnswers: [""], wrongAnswers: [""] }
     const [formData, setFormData] = useState(defaultFormData);
     const [formError, setFormError] = useState("");
@@ -54,7 +54,7 @@ const QuestionAdd = () => {
         if (wrongAnswers.length < 2) return setFormError("Pytanie musi mieć conajmniej 2 nieprawidłowe odpowiedzi");
 
         setFormError("");
-        Api('questions/add', {
+        Api(apiUrl, {
             method: 'POST',
             body: JSON.stringify({
                 question: formData.question,
@@ -87,6 +87,9 @@ const QuestionAdd = () => {
                     question !== null ? <input key={idx} type="text" id={`wrongAnswer_${idx}`} /> : null
                 ))}
                 <p className='add_question-error'>{formError}</p>
+                {captcha ? (
+                    <div class="g-recaptcha" data-sitekey="6LcKQqMkAAAAAH7ahqfhgQi1UUEttNsdhngBvDV2"></div>
+                ) : null}
                 <button onClick={handleSubmit}>Dodaj pytanie</button>
             </form>
         </>

@@ -148,7 +148,7 @@ const Dashboard = () => {
                         <Route index element={<DashboardHome />} />
                         <Route path="questions">
                             <Route path='list' element={<QuestionList />} />
-                            <Route path='add' element={<QuestionAdd />} />
+                            <Route path='add' element={<QuestionAdd apiUrl='questions/add' />} />
                         </Route>
                         <Route path="game">
                             <Route path='login' element={<GameLogin />} />
