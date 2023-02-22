@@ -36,7 +36,7 @@ const Home = () => {
                 <div className="about-wrapper">
                     <h2>Kim jesteśmy</h2>
                     <RiTeamFill />
-                    <p>Jesteśmy uczniami Zespołu Szkół nr. 2 im. Bartosza Głowackiego w Krasnymstawie. Uczymy się na kierunku technik informatyk. Projekt gry tworzymy hobbistycznie. Jednocześnie cieszymy się, że możemy reprezentować szkołe w ogólnopolskim konkursie.</p>
+                    <p>Jesteśmy uczniami Zespołu Szkół nr. 2 im. Bartosza Głowackiego w Krasnymstawie. Uczymy się na kierunkach technik informatyk oraz technik programista. Projekt gry tworzymy hobbistycznie. Jednocześnie cieszymy się, że możemy reprezentować szkołe w ogólnopolskim konkursie.</p>
                 </div>
             </section>
             <section id="contact" data-aos="fade-up">
@@ -45,19 +45,23 @@ const Home = () => {
                     <h2>Tu nasz znajdziesz</h2>
                     <p>Jeśli masz jakieś pytania, propozycję. Pisz śmiało, odezwiemy się ;)</p>
                     <div className="inline">
-                        <div data-aos="fade-right">
-                            <FaDiscord />
-                            <p>MuDzYn.#0420</p>
-                        </div>
                         <div data-aos="fade-up">
                             <a href="mailto:kontakt@geek-game.pl">
                                 <MdMail />
                                 <p>kontakt@geek-game.pl</p>
                             </a>
                         </div>
+                        <div data-aos="fade-right">
+                            <FaDiscord />
+                            <p>MuDzYn.#0420</p>
+                        </div>
                         <div data-aos="fade-left">
                             <FaDiscord />
                             <p>lkata#2186</p>
+                        </div>
+                        <div data-aos="fade-left">
+                            <FaDiscord />
+                            <p>.float#2612</p>
                         </div>
                     </div>
                 </div>
