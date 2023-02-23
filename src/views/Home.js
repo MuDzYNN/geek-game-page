@@ -16,7 +16,7 @@ const Home = () => {
         <div className="home">
             <Header />
             <div className="hero" data-aos="fade-up">
-                <h1>A co to za gra?</h1>
+                <h1>TEST</h1>
                 <h2>Nic szczególnego, ale możesz sprawdzić sam ;D</h2>
                 <Link to="/auth"><div className="btn">Przejdź do panelu</div></Link>
             </div>
