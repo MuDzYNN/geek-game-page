@@ -74,7 +74,6 @@ const Home = () => {
                     <p>Nasza gra na starcie posiada małą ilość pytań. Jest tak dlatego, żeby to sama społeczność mogła decydować o kierunku rozwoju gry. Na start jest tylko ok. 100 pytań głównie z katerogii informatyki.</p>
                     <h2>Twoja inicjatywa</h2>
                     <p>Jeśli chcesz mieć realny wpływ do rozjów projektu, możesz zaproponować jakieś pytanie. Po przeanalizowaniu i zatwierdzeniu twoje pytanie pojawi się w grze. Do twojego pytania musisz dodać co najmniej jedną prawidłową odpowiedź i dwie nieprawidłowe odpowiedzi.</p>
-
                     <QuestionAdd apiUrl='suggestions/add' captcha={true} />
                 </div>
             </section>

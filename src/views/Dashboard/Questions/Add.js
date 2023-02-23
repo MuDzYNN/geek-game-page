@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import useApi from '../../../hooks/useApi';
 import './Add.sass';
 
@@ -6,8 +7,17 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
     const defaultFormData = { goodAnswers: [""], wrongAnswers: [""] }
     const [formData, setFormData] = useState(defaultFormData);
     const [formError, setFormError] = useState("");
-    const formElement = useRef();
+    const formElement = useRef(null);
+    const captchaRef = useRef(null);
     const Api = useApi();
+
+    useEffect(() => {
+        console.log(process.env.REACT_APP_SITE_KEY)
+        console.log(process.env.REACT_APP_SECRET_KEY)
+        return () => {
+            captchaRef.current.reset();
+        }
+    }, []);
 
     const handleForm = e => {
         const newFormData = { ...formData };
@@ -46,6 +56,10 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
+        const token = captchaRef.current.getValue();
+        captchaRef.current.reset();
+        console.log(token)
+
         const goodAnswers = formData.goodAnswers.filter(v => v !== null && v !== '');
         const wrongAnswers = formData.wrongAnswers.filter(v => v !== null && v !== '');
 
@@ -71,7 +85,6 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
         });
     }
 
-
     return (
         <>
             <h1 className='dashboard-title'>Dodaj nowe pytanie</h1>
@@ -88,7 +101,10 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
                 ))}
                 <p className='add_question-error'>{formError}</p>
                 {captcha ? (
-                    <div class="g-recaptcha" data-sitekey="6LcKQqMkAAAAAH7ahqfhgQi1UUEttNsdhngBvDV2"></div>
+                    <ReCAPTCHA
+                        sitekey={process.env.REACT_APP_SITE_KEY}
+                        ref={captchaRef}
+                    />
                 ) : null}
                 <button onClick={handleSubmit}>Dodaj pytanie</button>
             </form>
