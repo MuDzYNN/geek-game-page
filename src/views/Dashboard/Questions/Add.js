@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import useApi from '../../../hooks/useApi';
 import './Add.sass';
@@ -10,14 +10,6 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
     const formElement = useRef(null);
     const captchaRef = useRef(null);
     const Api = useApi();
-
-    useEffect(() => {
-        console.log(process.env.REACT_APP_SITE_KEY)
-        console.log(process.env.REACT_APP_SECRET_KEY)
-        return () => {
-            captchaRef.current.reset();
-        }
-    }, []);
 
     const handleForm = e => {
         const newFormData = { ...formData };
@@ -39,6 +31,7 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
     }
 
     const handleBlur = e => {
+        if (!e.target.value) return;
         if (e.target.value.trim() !== '') return;
         const newFormData = { ...formData };
 
@@ -56,21 +49,20 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        const token = captchaRef.current.getValue();
-        captchaRef.current.reset();
-        console.log(token)
-
         const goodAnswers = formData.goodAnswers.filter(v => v !== null && v !== '');
         const wrongAnswers = formData.wrongAnswers.filter(v => v !== null && v !== '');
 
         if (!formData.question) return setFormError("Uzupełnij pole: Treść pytania");
         if (goodAnswers.length < 1) return setFormError("Pytanie musi mieć conajmniej 1 prawidłową odpowiedź");
         if (wrongAnswers.length < 2) return setFormError("Pytanie musi mieć conajmniej 2 nieprawidłowe odpowiedzi");
+        const token = captchaRef?.current?.getValue();
+        captchaRef?.current?.reset();
 
         setFormError("");
         Api(apiUrl, {
             method: 'POST',
             body: JSON.stringify({
+                captchaToken: token,
                 question: formData.question,
                 goodAnswers: goodAnswers,
                 wrongAnswers: wrongAnswers,
@@ -104,6 +96,7 @@ const QuestionAdd = ({ apiUrl, captcha = false }) => {
                     <ReCAPTCHA
                         sitekey={process.env.REACT_APP_SITE_KEY}
                         ref={captchaRef}
+                        theme='dark'
                     />
                 ) : null}
                 <button onClick={handleSubmit}>Dodaj pytanie</button>

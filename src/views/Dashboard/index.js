@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { FaSignInAlt, FaHouseUser, FaClipboard, FaList, FaPlus, FaCaretUp, FaSignOutAlt, FaHistory } from 'react-icons/fa';
+import { FaSignInAlt, FaHouseUser, FaClipboard, FaList, FaPlus, FaCaretUp, FaSignOutAlt, FaHistory, FaQuestion } from 'react-icons/fa';
 import { BiStats } from 'react-icons/bi';
 import { useRecoilState } from 'recoil';
 import userDashboard from '../../atoms/dashboardUser';
@@ -11,6 +11,7 @@ import './index.sass';
 import DashboardHome from './Home';
 import QuestionList from './Questions/List';
 import QuestionAdd from './Questions/Add';
+import QuestionPropositions from './Questions/Propositions';
 import GameLogin from './Game/Login';
 import GameEmulatorLogin from './Game/GameEmulatorLogin';
 import GameHistory from './Game/History';
@@ -72,6 +73,12 @@ const navLinks = [
                 label: 'Dodaj pytanie',
                 permission: 'questions-add',
                 to: '/dashboard/questions/add',
+            },
+            {
+                Icon: FaQuestion,
+                label: 'Propozycje pytań',
+                permission: 'questions-propositions',
+                to: '/dashboard/questions/propositions',
             },
         ]
     },
@@ -149,6 +156,7 @@ const Dashboard = () => {
                         <Route path="questions">
                             <Route path='list' element={<QuestionList />} />
                             <Route path='add' element={<QuestionAdd apiUrl='questions/add' />} />
+                            <Route path='Propositions' element={<QuestionPropositions />} />
                         </Route>
                         <Route path="game">
                             <Route path='login' element={<GameLogin />} />
