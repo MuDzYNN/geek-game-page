@@ -67,6 +67,7 @@ const Beasts = () => {
                             <td>-</td>
                             <td>Użytkownik</td>
                             <td>Wynik</td>
+                            <td>Czas (s)</td>
                             <td>Data</td>
                         </tr>
                     </thead>
@@ -76,6 +77,7 @@ const Beasts = () => {
                                 <td>{idx + 1}</td>
                                 <td>{beast.login}</td>
                                 <td>{beast.score}</td>
+                                <td>{beast.duration}</td>
                                 <td>{new Date(beast.timestamp).toUTCString()}</td>
                             </tr>
                         ))}

@@ -26,6 +26,7 @@ const GameHistory = () => {
                         <tr>
                             <td>-</td>
                             <td>Wynik</td>
+                            <td>Czas (s)</td>
                             <td>Data</td>
                             <td>Tryb gry</td>
                         </tr>
@@ -35,6 +36,7 @@ const GameHistory = () => {
                             <tr key={game.timestamp}>
                                 <td>{idx + 1}</td>
                                 <td>{game.score}</td>
+                                <td>{game.duration}</td>
                                 <td>{new Date(game.timestamp).toUTCString()}</td>
                                 <td>{game.name}</td>
                             </tr>

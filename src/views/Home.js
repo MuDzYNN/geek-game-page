@@ -23,7 +23,7 @@ const Home = () => {
             <section id="game" data-aos="fade-up">
                 <h1 className='title'>Kilka słów o grze</h1>
                 <div className="game">
-                    <img src="https://cdn.discordapp.com/attachments/1035612501078974474/1060970004394278992/uklad_1.png" alt="" data-aos="fade-right" />
+                    <img src="https://cdn.discordapp.com/attachments/1070767281929457784/1079864181156753428/character.png" alt="" data-aos="fade-right" />
                     <div className="game-wrapper" data-aos="fade-left">
                         <h2>Z czym to się je?</h2>
                         <FaGamepad />
