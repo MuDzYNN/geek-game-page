@@ -27,7 +27,7 @@ const Home = () => {
                     <div className="game-wrapper" data-aos="fade-left">
                         <h2>Z czym to się je?</h2>
                         <FaGamepad />
-                        <p>Sama gra jest formą Quizu w formie speedrun. Przemiarzasz bezdroże jednoczeście odpowiadając na pytania. To na prawde bajecznie proste!</p>
+                        <p>Sama gra jest formą Quizu w formie speedrun. Przemierzasz bezdroże jednoczeście odpowiadając na pytania. To na prawde bajecznie proste!</p>
                         <Link to="/download"><div className="btn">POBIERAM!</div></Link>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const Home = () => {
                 <div className="about-wrapper">
                     <h2>Kim jesteśmy</h2>
                     <RiTeamFill />
-                    <p>Jesteśmy uczniami Zespołu Szkół nr. 2 im. Bartosza Głowackiego w Krasnymstawie. Uczymy się na kierunkach technik informatyk oraz technik programista. Projekt gry tworzymy hobbistycznie. Jednocześnie cieszymy się, że możemy reprezentować szkołe w ogólnopolskim konkursie.</p>
+                    <p>Jesteśmy uczniami Zespołu Szkół nr 2 im. Bartosza Głowackiego w Krasnymstawie. Uczymy się na kierunkach technik informatyk oraz technik programista. Projekt gry tworzymy hobbistycznie. Jednocześnie cieszymy się, że możemy reprezentować szkołe w ogólnopolskim konkursie.</p>
                 </div>
             </section>
             <section id="contact" data-aos="fade-up">
@@ -71,9 +71,9 @@ const Home = () => {
                 <h1 className="title">Propozycje pytań</h1>
                 <div className="questions-wrapper">
                     <h2>Obecne pytania</h2>
-                    <p>Nasza gra na starcie posiada małą ilość pytań. Jest tak dlatego, żeby to sama społeczność mogła decydować o kierunku rozwoju gry. Na start jest tylko ok. 100 pytań głównie z katerogii informatyki.</p>
+                    <p>Nasza gra na starcie posiada małą ilość pytań. Jest tak dlatego, żeby to sama społeczność mogła decydować o kierunku rozwoju gry. Na start jest tylko ok. 100 pytań, które są głównie związane z informatyką.</p>
                     <h2>Twoja inicjatywa</h2>
-                    <p>Jeśli chcesz mieć realny wpływ do rozjów projektu, możesz zaproponować jakieś pytanie. Po przeanalizowaniu i zatwierdzeniu twoje pytanie pojawi się w grze. Do twojego pytania musisz dodać co najmniej jedną prawidłową odpowiedź i dwie nieprawidłowe odpowiedzi.</p>
+                    <p>Jeśli chcesz mieć realny wpływ do rozwojów projektu, możesz zaproponować jakieś pytanie. Po przeanalizowaniu i zatwierdzeniu twojego pytania, pytanie te pojawi się w grze. Przy tworzeniu propozycji pytania musisz podać co najmniej jedną prawidłową odpowiedź i dwie nieprawidłowe odpowiedzi.</p>
                     <QuestionAdd apiUrl='suggestions/add' captcha={true} />
                 </div>
             </section>
