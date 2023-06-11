@@ -27,7 +27,7 @@ const Home = () => {
                     <div className="game-wrapper" data-aos="fade-left">
                         <h2>Z czym to się je?</h2>
                         <FaGamepad />
-                        <p>Sama gra jest formą Quizu w formie speedrun. Przemierzasz bezdroże jednoczeście odpowiadając na pytania. To na prawde bajecznie proste!</p>
+                        <p>Sama gra jest formą Quizu w formie speedrun. Przemierzasz bezdroże jednocześnie odpowiadając na pytania. To na prawde bajecznie proste!</p>
                         <Link to="/download"><div className="btn">POBIERAM!</div></Link>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ const Home = () => {
                         </div>
                         <div data-aos="fade-left">
                             <FaDiscord />
-                            <p>.float#2612</p>
+                            <p>template&lt;class T&gt;#2612</p>
                         </div>
                     </div>
                 </div>
