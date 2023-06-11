@@ -12,8 +12,8 @@ const Download = () => {
                     <button className="btn">Pobierz (Windows)</button>
                 </a>
                 <p>Twój antywirus, może uznać instalator za wirusa. Ale zaufaj na słowo, jesteś w 100% bezpieczny :)</p>
-                <p>Mininalne wymagania sprzętowe: przysłowiony toster.</p>
-                <p>Na słabszych komputerach może wystąpić problem z niezaliczaniem odpowiedzi, podczas przechodzenia przez bramkę. W takiej sytuacji lepiej jest nie przyśpieszać podczas przechodzenia przez nie. Lepsze komputery są bezpieczniejsze. Staramy się poprawić ten błąd.</p>
+                <p>Minimalne wymagania sprzętowe: przysłowiony toster.</p>
+                <p>Na słabszych komputerach może wystąpić problem z niezaliczaniem odpowiedzi, podczas przechodzenia przez bramkę. W takiej sytuacji lepiej jest nie przyśpieszać podczas przechodzenia przez nie. Lepsze komputery są bezpieczniejsze. Staramy się naprawić ten błąd.</p>
             </div>
             <Footer />
         </div>
